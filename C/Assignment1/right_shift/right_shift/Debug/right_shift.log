@@ -1,0 +1,5 @@
+﻿  Source.c
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\right_shift\right_shift\source.c(8): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\right_shift\right_shift\source.c(40): warning C4013: 'getch' undefined; assuming extern returning int
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\right_shift\right_shift\source.c(33): warning C4101: 'len': unreferenced local variable
+  right_shift.vcxproj -> C:\Users\vishy\source\repos\sragvisai\ncrwork\C\Assignment1\right_shift\Debug\right_shift.exe
