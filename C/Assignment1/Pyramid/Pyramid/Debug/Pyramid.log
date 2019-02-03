@@ -1,0 +1,5 @@
+﻿  Source.c
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\pyramid\pyramid\source.c(17): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\pyramid\pyramid\source.c(19): warning C4554: '&': check operator precedence for possible error; use parentheses to clarify precedence
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\pyramid\pyramid\source.c(23): warning C4013: 'getch' undefined; assuming extern returning int
+  Pyramid.vcxproj -> C:\Users\vishy\source\repos\sragvisai\ncrwork\C\Assignment1\Pyramid\Debug\Pyramid.exe
