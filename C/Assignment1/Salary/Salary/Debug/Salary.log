@@ -1,0 +1,7 @@
+﻿  Source.c
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\salary\salary\source.c(8): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\salary\salary\source.c(10): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\salary\salary\source.c(12): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\salary\salary\source.c(14): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\salary\salary\source.c(18): warning C4013: 'getch' undefined; assuming extern returning int
+  Salary.vcxproj -> C:\Users\vishy\source\repos\sragvisai\ncrwork\C\Assignment1\Salary\Debug\Salary.exe
