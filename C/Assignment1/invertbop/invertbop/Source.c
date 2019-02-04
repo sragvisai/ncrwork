@@ -3,19 +3,16 @@
 #include<stdlib.h>
 int shiftbop(n, b, p)
 {
-	int len, rem = 0, i = 0,sum=0;
+	int len, rem = 0, i = 0,sum=0,bc=0,j=0;
 	len = log2(n);
-	//len++;
-	printf("Length is %d", len);
+	len++;
 	int *bin = (int *)malloc(sizeof(int)*len);
+	i = len-1;
 	while (n > 0)
 	{
-		if (n % 2 == 0)
-			bin[i] = 0;
-		else if (n % 2 == 1)
-			bin[i] = 1;
-		i++;
-		n = n / 10;
+		bin[i] = n % 2;
+		i--;
+		n = n / 2;
 	}
 	printf("\n");
 	
@@ -23,13 +20,15 @@ int shiftbop(n, b, p)
 	{
 		printf("%d", bin[i]);
 	}
-
-	for (i = p; i <b; i++)
-	{
+	
+	for (i = p-1; bc<b; i++,bc++)
+	{	
+		//printf("%d", bc);
+		//printf("%d", b);
 		if (bin[i] == 1)
-			bin[i] == 0;
+			bin[i] = 0;
 		else if (bin[i] == 0)
-			bin[i] == 1;
+			bin[i] = 1;
 
 	}
 	printf("\n");
@@ -37,10 +36,10 @@ int shiftbop(n, b, p)
 	{
 		printf("%d", bin[i]);
 	}
-	for (i = 0; i < len; i++)
+	for (i = len-1,j=0; i >=0; i--,j++)
 	{
 		rem = bin[i];
-		sum = sum + (rem*pow(2, i));
+		sum = sum + (rem*pow(2, j));
 	}
 	printf("\n");
 	return sum;
@@ -54,4 +53,5 @@ void main()
 	scanf_s("%d", &b);
 	c=shiftbop(n, b, p);
 	printf("%d\n", c);
+	getch();
 }
