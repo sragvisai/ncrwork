@@ -43,6 +43,7 @@ int shiftbop(n, b, p)
 	}
 	printf("\n");
 	return sum;
+
 }
 void main()
 {
