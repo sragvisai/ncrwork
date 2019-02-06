@@ -6,7 +6,6 @@ void main()
 	int i = 0, flag = 0,sum=0,num=0,j=0,len=0;
 	printf("Enter the  length of the array\n");
 	scanf_s("%d", &len);
-	len++;
 	int *arr = (int *)malloc(sizeof(int)*len);
 	for (i = 0; i < len; i++)
 	{
