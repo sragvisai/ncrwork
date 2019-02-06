@@ -1,7 +1,5 @@
 ﻿  Source.c
-c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(7): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
-c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(7): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(50): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(66): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(69): warning C4013: 'getch' undefined; assuming extern returning int
-  hexaoper.vcxproj -> C:\Users\vishy\source\repos\sragvisai\ncrwork\C\Assignment1\hexaoper\Debug\hexaoper.exe
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(35): warning C4244: 'function': conversion from 'int' to 'float', possible loss of data
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(35): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+c:\users\vishy\source\repos\sragvisai\ncrwork\c\assignment1\hexaoper\hexaoper\source.c(44): warning C4013: 'getch' undefined; assuming extern returning int
+  hexaoper.vcxproj -> C:\Users\vishy\source\Repos\sragvisai\ncrwork\C\Assignment1\hexaoper\Debug\hexaoper.exe
