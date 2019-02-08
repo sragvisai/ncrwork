@@ -1,7 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
-void ex(char *s1, char *s2)
+void expand(char *s1, char *s2)
 {
 	int len = 0,i=0,q=0,diff=0,y=0;
 	char t;
@@ -36,6 +36,6 @@ void main()
 	char s1[25],s2[25];
 	printf("Enter the array\n");
 	scanf_s("%s", s1, 25);
-	 ex(s1, s2);
+	 expand(s1, s2);
 	 getch();
 }
