@@ -17,7 +17,7 @@ char *dele(char *s1, char *s2)
 			j++;
 		}
 	}
-	i = 0;
+	i = 0;//
 	
 	while (i < len-1)
 	{
