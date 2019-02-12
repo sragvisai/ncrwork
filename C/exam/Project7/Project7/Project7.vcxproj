@@ -74,6 +74,9 @@
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
+      <AdditionalIncludeDirectories>
+      </AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
@@ -113,6 +116,7 @@
     <ClCompile Include="mian.c" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="comments.h" />
     <ClInclude Include="count.h" />
     <ClInclude Include="tab2.h" />
   </ItemGroup>

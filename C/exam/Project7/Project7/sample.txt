@@ -1,1 +1,9 @@
-hey	there
+hey there how you doing?// I am single line comment
+/* 
+asd
+asd
+asda
+sd
+asdasd*/
+Hello i am after the pointer!!
+hey
