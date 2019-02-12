@@ -26,8 +26,5 @@
     <ClInclude Include="tab2.h">
       <Filter>Source Files</Filter>
     </ClInclude>
-    <ClInclude Include="comments.h">
-      <Filter>Source Files</Filter>
-    </ClInclude>
   </ItemGroup>
 </Project>
