@@ -74,13 +74,19 @@ public:
 		return (*this);
 	}
 	friend ostream &operator<<(ostream &cout, Complex c);
-
+	friend istream &operator >> (istream &cin, Complex &c);
 };
 ostream &operator<<(ostream &cout, Complex c)
 {
 	cout << c.rel << endl;
 	cout << c.img <<endl;
 	return (cout);
+}
+istream &operator>>(istream &cin, Complex &c)
+{
+	cin >> c.rel;
+	cin >> c.img;
+	return (cin);
 }
 
 void main()
@@ -112,5 +118,8 @@ void main()
 	cout << c1;
 	c1 = (c2, c3);
 	cout << c1;
+	cout << "Overloading cin operator" << endl;
+	cin >> c3;
+	cout << c3;
 	system("pause");
 }
