@@ -74,18 +74,30 @@ void  main()
 		case '(':
 		case '{':
 		case '[':st.push(ch);
+			flag = 1;
 			break;
 		case '}':
 		case ')':
-		case ']':
+		case ']':if (!st.Isempty())
+		{
 			if (((ch == '}' && (st.peek() == '{')) || ((ch == ']' && (st.peek() == '['))) || ((ch == ')' && (st.peek() == '(')))))
+			{
+				flag = 0;
 				st.pop();
+			}
 			else
 			{
 				flag = 1;
-				cout << "Unbalanced" << endl;
+				break;
 
-			}break;
+			}
+		}
+				 else
+				 {
+					 flag = 1;
+					 break;
+				 }
+			break;
 		default:
 			break;
 		}
@@ -93,6 +105,10 @@ void  main()
 	if (flag==0)
 	{
 		cout << "balenced";
+	}
+	else
+	{
+		cout << "Unbalanced" << endl;
 	}
 	system("pause");
 }
