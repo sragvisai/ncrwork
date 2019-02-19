@@ -29,6 +29,8 @@ public:
 	}
 	bool IsFull()
 	{
+		//cout << stk.size << endl;
+		//cout << stk.top;
 		return(stk.top == (stk.size - 1));
 	}
 	int pop()
@@ -46,42 +48,55 @@ public:
 	{
 		return(stk.s[stk.top]);
 	}
+	void display()
+	{
+		for (int i = 0; i <= stk.top; i++)
+			cout << stk.s[i] << endl;
+	}
 	int gettop()
 	{
 		return stk.top;
 	}
-	void display()
-	{
-		for (int i = 0; i <= stk.top; i++)
-			cout << "	"<<stk.s[i] ;
-	}
 
 };
-
 void main()
 {
 	stack2 st;
 	char str[20], ch;
-	int n, i, j,res,temp;
-	cout << "Enter the postfix notation" << endl;
+	int n,num=0,i=0,p=0,j=0,temp=0;
+	cout << "Enter the string in postfix notation with delimiter @" << endl;
 	cin >> str;
-	cout << "Enter the size" << endl;
+	cout << "Enter the stack size" << endl;
 	cin >> n;
 	st.getsize(n);
-	for (i = 0; i < strlen(str); i++)
-	{
+	while (i < strlen(str)) {
 		if (isdigit(str[i]))
 		{
-			j = str[i]-'0';
-			//cout << "j=" << j << endl;
-			st.push(j);
-			//cout << "pushed" << str[i] << endl;
+			j = i;
+			ch = str[i];
+			num = 0;
+			p = 0;
+			while (str[j] != '@')
+			{
+				p++;
+				j++;
+			}
+			//cout << "p=" << p << endl;
+			while (str[i] != '@')
+			{
+				//cout << "str[i] " << str[i] - '0' << endl;
+				num = num + (str[i] - '0')*pow(10, --p);
+				i++;
+			}
+			i++;
+			st.push(num);
+			cout << "num =" << num << endl;
+			//cout << "i=" << i << endl;
 		}
 		else
 		{
-			//cout << "top=" << st.gettop();
 			if (st.gettop()>0)
-			{	
+			{
 				temp = 0;
 				//cout << "stack" << endl;
 				//st.display();
@@ -98,7 +113,7 @@ void main()
 					st.push(temp);
 					break;
 				case'+'://cout << "before tem" << temp << endl;	
-					temp = temp+st.peek();
+					temp = temp + st.peek();
 					st.pop();
 					//cout << "Cha" << str[i] << endl;
 					//cout << temp << endl;
@@ -106,34 +121,30 @@ void main()
 					break;
 
 				case'-'://cout << "before tem" << temp << endl;
-					temp = temp-st.peek();
+					temp = temp - st.peek();
 					st.pop();
 					//cout << "Cha" << str[i] << endl;
 					//cout << temp << endl;
 					st.push(temp);
 					break;
 				case'/'://cout << "before tem" << temp << endl;
-					temp = temp/st.peek();
+					temp = temp / st.peek();
 					st.pop();
 					//cout << "Cha" << str[i] << endl;
 					//cout << temp << endl;
 					st.push(temp);
 					break;
-					
+
 				default:
 					break;
 				}
 			}
-			/*else
-			{
-				cout << "here" << endl;
-				
-				
-			}*/
+			i++;
 		}
+		
 	}
-	//st.display();
-	//cout << endl;
-	cout << temp << endl;
+	
+	cout << "out here" << endl;
+	st.display();
 	system("pause");
 }
