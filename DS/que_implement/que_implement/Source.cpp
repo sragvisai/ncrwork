@@ -11,7 +11,7 @@ public:
 	 que() {
 		 qu.q = NULL;
 		 qu.size = 0;
-		 qu.f = 0; 
+		 qu.f = -1; 
 		 qu.r =-1;
 	}
 	 void getsize(int n)
@@ -24,15 +24,33 @@ public:
 		 //cout << "Here" << endl;
 		// cout << qu.f;
 		 //cout << qu.r << endl;
-		 for (int i = qu.f; i <=qu.r; i = (i++%(qu.size)))
-			 cout <<" "<< qu.q[i];
+		 int i = qu.f;
+		 while(i <= qu.r)
+		 {
+			 if(i=qu.size-1)
+
+		 }
+		 for (int i = qu.f; i <= qu.r; i = (i++ % (qu.size)))
+		 {
+			 if (qu.f == qu.size - 1)
+				 qu.f = 0;
+
+
+		 }
 	 }
 	 void enque(int ele)
 	 {
 		 //cout << "r"<<qu.r << endl;
 		// cout <<"f"<< qu.f << endl;
-		 if (qu.f > (qu.r+1) % qu.size) {
+		 if (qu.f == (qu.r+1) % qu.size) {
 			 cout << "Overflow" << endl;
+		 }
+		 else if (qu.f == -1 && qu.r == -1)
+		 {
+			 qu.f = 0; 
+			 qu.r = (qu.r + 1) % (qu.size);
+			 qu.q[qu.r] = ele;
+
 		 }
 		 else
 		 {
@@ -44,15 +62,21 @@ public:
 	 }
 	 int deque() {
 		 int x=-999;
-		 if (qu.f > (qu.r+1) % qu.size) {
+		 if (qu.f == (qu.r+1) % qu.size) {
 			 cout << "Undeflow" << endl;
+			 return x;
+		 }
+		 else if(qu.f==qu.r)
+		 {
+			 x = qu.q[qu.f];
+			 qu.f = -1;
+			 qu.r = -1;
 			 return x;
 		 }
 		 else
 		 {
 			 x = qu.q[qu.f];
-			 qu.f=(qu.f+1)%(qu.size);
-			 return x;
+			 qu.f = (qu.f + 1) % qu.size;
 		 }
 	 }
 };
