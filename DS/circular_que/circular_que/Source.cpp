@@ -21,13 +21,29 @@ public:
 	}
 	void display()
 	{
-		//cout << "Here" << endl;
-		// cout << qu.f;
-		//cout << qu.r << endl;
-		for (int i = qu.f; i != qu.r; i = (i++ % (qu.size)))
+		int i = qu.f;
+		while (i != qu.r)
 		{
-			cout << qu.q[i];
+			if (i < qu.r)
+			{
+				cout << " " << qu.q[i];
+				i++;
+			}
+			else if (i==qu.size-1&&i > qu.r && qu.r != -1)
+			{
+				i--;
+				cout << " " << qu.q[i];
+			}
+			else
+			{
+				cout << " " << qu.q[i];
+				i=(i+1)%qu.size;
+			}
+
 		}
+		if (i == qu.r)
+			cout << " " << qu.q[i];
+		cout << "The above one is the q" << endl;
 	}
 	void enque(int ele)
 	{
@@ -45,6 +61,7 @@ public:
 		}
 		else
 		{
+			cout << "here" << endl;
 			qu.r = (qu.r + 1) % (qu.size);
 			qu.q[qu.r] = ele;
 
@@ -52,8 +69,10 @@ public:
 		}
 	}
 	int deque() {
+		cout << "r="<<qu.r << endl;
+		 cout <<"f="<< qu.f << endl;
 		int x = -999;
-		if (qu.f == (qu.r + 1) % qu.size) {
+		if (qu.r!=qu.size-1&&qu.f == (qu.r + 1) % qu.size) {
 			cout << "Undeflow" << endl;
 			return x;
 		}

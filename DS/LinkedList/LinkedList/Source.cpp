@@ -38,7 +38,7 @@ public:
 
 	void Travel_Backward();
 
-	//void Reverse();
+	void Reverse();
 
 	~__list__();
 	friend void print(struct node *temp);
@@ -79,20 +79,21 @@ void __list__::Insert_Last(int ele)
 	temp->data = ele;
 
 	temp->next = NULL;
+	cout << "initialized" << endl;
 
 	if (start == NULL)
 
 		start = temp;
 
-	else
+	else {
+		p = start;
+		while (p->next != NULL)
 
-		start = temp;
+			p = p->next;
 
-	while (p->next != NULL)
-
-		p = p->next;
-
-	p->next = temp;
+		p->next = temp;
+	}
+	cout << "last" << endl;
 
 }
 
@@ -144,15 +145,15 @@ void __list__::Insert_After(int sel, int ele)
 void __list__::Insert_Before(int sel, int ele)
 
 {
-	struct node *temp=NULL;
-	struct node *curr=NULL;
+	struct node *temp = NULL;
+	struct node *curr = NULL;
 	if (start->data == sel)
 	{
 		Insert_First(ele);
 	}
 	else
-	{	
-		
+	{
+		temp = new node;
 		temp->next = NULL;
 		temp->data = ele;
 		while (curr->next != NULL&&curr->next->data != sel)
@@ -311,7 +312,7 @@ void __list__::Delete_Spec(int ele)
 }
 void __list__::Travel_Forward()
 {
-	if (start = NULL)
+	if (start == NULL)
 		cout << "The list is empty" << endl;
 	else
 	{
@@ -325,7 +326,7 @@ void __list__::Travel_Forward()
 	}
 }
 void __list__::Travel_Backward()
-{	
+{
 	if (start != NULL)
 		print(start);
 
@@ -335,7 +336,26 @@ void print(struct node *curr)
 	if (curr != NULL)
 	{
 		print(curr->next);
-		cout << curr->next;
+		cout << curr->data << endl;
+	}
+}
+void __list__::Reverse() {
+	struct node *Rev = NULL;
+	struct node *temp;
+	if (start != NULL)
+	{
+		if (start->next != NULL)
+		{
+			while (start != NULL)
+			{
+				temp = start;
+				start = temp->next;
+				temp->next = Rev;
+				Rev = temp;
+
+			}
+		}
+		start = Rev;
 	}
 }
 __list__::~__list__()
@@ -356,13 +376,14 @@ int main()
 
 {
 	__list__ l;
-	int ch,ele,sel;
-	cout << "Enter the selection 1.Enter the at first" << endl << "2.insert at last " << endl << "3.Insert after this ele" << endl << "4.Insert before this ele" << endl << "5.Delete the first ele" << endl << "6.Delete the last ele" << endl << "7.Delete specific ele" << endl << "8.PRINT" << endl<<"9.reverse print"<<endl;
-
-	cin >> ch;
+	int ch, ele, sel;
+	
 
 	while (1)
 	{
+		cout <<endl<< "Enter the selection 1.Enter the at first" << endl << "2.insert at last " << endl << "3.Insert after this ele" << endl << "4.Insert before this ele" << endl << "5.Delete the first ele" << endl << "6.Delete the last ele" << endl << "7.Delete specific ele" << endl << "8.PRINT" << endl << "9.reverse print" << endl<<"10.Reverse the list"<<endl<<"11.Exit"<<endl;
+
+		cin >> ch;
 		switch (ch)
 		{
 		case 1:cout << "Enter the ele at the first" << endl;
@@ -374,7 +395,7 @@ int main()
 			l.Insert_Last(ele);
 			break;
 		case 3:cout << "INSERT AFTETR THIS ELEMENT" << endl;
-			cin >>sel;
+			cin >> sel;
 			cout << "Enter the ele" << endl;
 			cin >> ele;
 			l.Insert_After(sel, ele);
@@ -386,7 +407,7 @@ int main()
 			l.Insert_Before(sel, ele);
 			break;
 		case 5:cout << "DELETE THE FIRST ELE" << endl;
-			ele=l.Delete_First();
+			ele = l.Delete_First();
 			cout << "DELETED " << ele << endl;
 			break;
 		case 6:cout << "Delete last" << endl;
@@ -395,7 +416,7 @@ int main()
 			break;
 		case 7: cout << "Delete spec" << endl;
 			cin >> sel;
-			  l.Delete_Spec(sel);
+			l.Delete_Spec(sel);
 			cout << "Deleted " << ele;
 			break;
 		case 8: cout << "Printing" << endl;
@@ -406,7 +427,11 @@ int main()
 			l.Travel_Backward();
 			cout << endl;
 			break;
-		case 10:exit(0);
+		case 11:exit(0);
+		case 10:cout << "Reversing the linked list" << endl;
+			l.Reverse();
+			cout << endl;
+			break;
 		default:
 			break;
 		}
