@@ -9,7 +9,7 @@ void main()
 	DWORD dw;
 	int n = strlen(s);
 	int q = wcslen(sw);
-	int b = IsTextUnicode(s, sizeof(WCHAR)*q, NULL);
+	int b = IsTextUnicode(sw, sizeof(WCHAR)*q, NULL);
 	if (b == 1)//testing the fuction
 		wprintf(L"%s It is a unicode\n", sw);
 	else

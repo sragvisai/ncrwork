@@ -327,7 +327,7 @@ void __list__::Travel_Forward()
 void __list__::Travel_Backward()
 {	
 	if (start != NULL)
-		print(start);
+		printf(start);
 
 }
 void print(struct node *curr)

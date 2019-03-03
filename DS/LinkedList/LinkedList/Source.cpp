@@ -1,20 +1,13 @@
 #include<iostream>
 using namespace std;
 struct node
-
-{
-
-	int data;
-
+{	int data;
 	struct node *next;
-
 };
 
 class __list__
-
 {
-
-	struct node *start;
+struct node *start;
 
 public:
 
@@ -53,7 +46,6 @@ __list__::__list__()
 }
 
 void __list__::Insert_First(int ele)
-
 {
 
 	struct node *temp;
@@ -156,6 +148,7 @@ void __list__::Insert_Before(int sel, int ele)
 		temp = new node;
 		temp->next = NULL;
 		temp->data = ele;
+		curr = start;
 		while (curr->next != NULL&&curr->next->data != sel)
 		{
 			curr = curr->next;
