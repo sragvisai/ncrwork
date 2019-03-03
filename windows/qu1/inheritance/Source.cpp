@@ -16,18 +16,21 @@ void main(int argc, char *argv[]) {
 	{
 		cout << "There is an error" << endl;
 		cout << "The error code is" << GetLastError() << endl;
+		
 
 	}
 	else
 	{
-		cout << "Created the event";
+		cout << "Created the event\n";
+		cout << "handle=" << getevent << endl;
 		
 		
 	}
 	//inheritance of the event created
 	if (CreateProcessA(NULL, argv[1], NULL, NULL, TRUE, 0, NULL, NULL, &si, &pi))
-	{
+	{	
 		cout << "Inherited" << endl;
+		cout << "Handle=" <<getevent<< endl;
 
 	}
 	else
