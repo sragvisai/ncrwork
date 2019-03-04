@@ -33,7 +33,7 @@ void main(int argc, char *argv[]) {
 		cout << "Handle=" <<getevent<< endl;
 
 	}
-	else
+	else 
 	{
 		cout << "error in the process creation" << endl;
 		cout << "error code is " << GetLastError();
