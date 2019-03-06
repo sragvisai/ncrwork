@@ -29,8 +29,8 @@ public:
 	}
 	bool IsFull()
 	{
-		cout << stk.size<<endl;
-		cout << stk.top;
+		/*cout << stk.size<<endl;
+		cout << stk.top;*/
 		return(stk.top == (stk.size - 1));
 	}
 	int pop()
@@ -50,6 +50,7 @@ public:
 	}
 	void display()
 	{
+		cout << "Displaying the stack contents for you" << endl << endl;
 		for (int i = 0; i <= stk.top; i++)
 			cout << stk.s[i] << endl;
 	}
@@ -58,27 +59,29 @@ public:
 void main()
 {
 	stack2 st;
-	int op,n,ele;
-	cout << "Enter the size";
-	cin >> n;
-	st.getsize(n);
+	int op,size,ele;
+	cout << "Enter the size of the stack to be taken"<<endl<<endl;
+	cin >> size;
+	st.getsize(size);
 	while (1)
 	{
-		cout << "Choose the option" << endl;
+		cout << "\nChoose the option\n 1.PUSH\n 2.POP\n 3.PEEk\n 4.Display\n 5. EXIT\n" << endl;
 		cin >> op;
 		switch (op)
 		{
-		case 1:cout << "Enter the ele" << endl;
+		case 1:cout << "Enter the value of the element to be pushed into the stack" << endl;
 			cin >> ele;
 			st.push(ele);
 			break;
-		case 2:cout << "Popped out" << st.pop() << endl;;
+		case 2:	cout << "Let's pop the element now " << endl << endl;
+				cout << "Popped out" << st.pop() << endl;;
 			break;
-		case 3:cout << "Peeked " << st.peek() << endl;
+		case 3:cout << "You chose to peek and here is the top element " << endl << endl;
+			cout << "Peeked----- " << st.peek() << endl;
 			break;
-		case 5: st.display();
+		case 4: st.display();
 			break;
-		case 4: exit(0);
+		case 5: exit(0);
 		default:
 			break;
 		}

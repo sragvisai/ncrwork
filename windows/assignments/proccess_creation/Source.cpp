@@ -12,18 +12,13 @@ void main(int argc, TCHAR	*argv[])
 	if (CreateProcessA(NULL,argv[1],NULL,NULL,FALSE,0,NULL,NULL,&si,&pi))
 	{
 		cout<<"CreateProcess done \n";
+		WaitForSingleObject(pi.hProcess, INFINITE);
+		CloseHandle(pi.hProcess);
+		CloseHandle(pi.hThread);
 	}
 	else
 	{
 		cout<<"there is an error here\n"<< GetLastError();
-	}
-	if (CreateProcessA(NULL, argv[2], NULL, NULL, FALSE, 0, NULL, NULL, &si, &pi))
-	{
-		cout << "CreateProcess calc is  done \n";
-	}
-	else
-	{
-		cout << "there is no calc error here\n" << GetLastError();
 	}
 	system("pause");
 }
