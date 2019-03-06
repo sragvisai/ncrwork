@@ -7,7 +7,7 @@ int prec(char c)
 	else if (c == '+' || c == '-')
 		return 9;
 	else if (c == '{' || c == '(' || c == '[')
-		return 5;
+		return 15;
 	else
 		return 0;
 }
@@ -49,7 +49,7 @@ public:
 		if (!Isempty())
 			return(stk.s[stk.top--]);
 		else
-			cout << "Underflow";
+			cout << "UnderflowA";
 	}
 	bool Isempty()
 	{
@@ -100,30 +100,9 @@ void main()
 				//cout << "hello";
 				st.push(ch);
 			}
-			else if (ch == '}')
-			{
-				cout << "hello" << endl;
-				while (st.peek() != '{')
-				{
-					strop[j] = st.pop();
-					//cout << strop[j] << endl;
-					j++;
-				}
-				cout <<"pooper" <<st.pop() << endl;;
-			}
-			else if (ch == ']')
-			{
-				while (st.peek() != '[')
-				{
-					strop[j] = st.pop();
-					//cout << strop[j] << endl;
-					j++;
-				}
-				st.pop();
-			}
 			else if (ch == ')')
 			{
-				while (st.peek() != '(')
+				while (st.peek() != '(' && !st.Isempty())
 				{
 					strop[j] = st.pop();
 					//cout << strop[j] << endl;
@@ -133,16 +112,19 @@ void main()
 			}
 			else if ((prec(st.peek()) >= prec(ch)))
 			{
-				cout << ch << endl;
-				strop[j] = st.pop();
-				cout << strop[j];
-				j++;
+				while ((prec(st.peek()) >= prec(ch))) {
+					strop[j] = st.pop();
+					j++;
+				}
 				st.push(ch);
 			}
 			
 			else
 			{
 				st.push(ch);
+				cout << "pushed-----" << ch << endl;
+				st.display();
+
 			}
 		}
 	}

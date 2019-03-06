@@ -1,6 +1,6 @@
 #include<stdio.h>
 char* strcpy(char *p, char *s)
-{	
+{
 	int i = 0;
 	while (s[i] != '\0')
 	{
@@ -11,7 +11,7 @@ char* strcpy(char *p, char *s)
 	return s;
 }
 void strcat(char *t, char *s)
-{	
+{
 	t = t + strlen(t);
 	while (*s != NULL)
 	{
@@ -24,8 +24,8 @@ void strcat(char *t, char *s)
 }
 char * strrev(char *s)
 {
-	int i = 0,len=0,j=0;
-	char t,*e;
+	int i = 0, len = 0, j = 0;
+	char t, *e;
 	e = s;
 	while (s[i] != '\0')
 	{
@@ -34,8 +34,8 @@ char * strrev(char *s)
 		i++;
 	}
 	e--;
-	for (i=0;i<len/2;i++)
-	{	
+	for (i = 0; i < len / 2; i++)
+	{
 		t = *s;
 		*s = *e;
 		*e = t;
@@ -58,8 +58,8 @@ int strcmp(char *s, char *p)
 }
 void main()
 {
-	char *r,concat[25],comp[25];
-	int i = 0,j=0;
+	char *r, concat[25], comp[25];
+	int i = 0, j = 0;
 	int first_length = 0, second_length = 0;
 	printf("Enter the first string length\n");
 	scanf("%d", &first_length);
@@ -78,8 +78,8 @@ void main()
 		scanf("%s", first);
 		printf("Enter the second  string\n");
 		scanf("%s", second);
-		printf("Performing the string copy operation on %s onto %s\n\n",first,second);
-		printf("Taken strings are %s and %s \n", first,second);
+		printf("Performing the string copy operation on %s onto %s\n\n", first, second);
+		printf("Taken strings are %s and %s \n", first, second);
 		strcpy(first, second);//s is being copied into p
 		printf(" Copied as %s\n", first);
 		printf("Performing the concatenation operation\n\n");
@@ -94,12 +94,12 @@ void main()
 		printf("\n\n String comparision\n\n");
 		printf("\nEnter a string to be compared %s", first);
 		scanf("%s", comp);
-		i=strcmp(first, comp);
+		i = strcmp(first, comp);
 		if (i == 0)
-			printf("The strings %s and %s are equal\n",first,comp);
+			printf("The strings %s and %s are equal\n", first, comp);
 		else
-			printf("The strings %s and %s are not equal\n",first,comp);
+			printf("The strings %s and %s are not equal\n", first, comp);
 	}
 	getch();
-	
+
 }

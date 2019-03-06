@@ -5,19 +5,16 @@ char * expand(char *initial_string, char *expanded_string)
 {
 	int initial_string_length = 0, i = 0, q = 0, diff = 0, y = 0;
 	char t;
-	initial_string_length = strinitial_string_length(initial_string);
+	initial_string_length = strlen(initial_string);
 	for (i = 0; i < initial_string_length; i++)
 	{
 		if (initial_string[i] == '-')
 		{
-
 			diff = initial_string[i + 1] - initial_string[i - 1];
 			y = 1;
 			while (y < diff)
 			{
-
 				expanded_string[q] = expanded_string[q - 1] + 1;
-				//printf("%c", expanded_string[q]);
 				y++;
 				q++;
 			}
@@ -25,13 +22,10 @@ char * expand(char *initial_string, char *expanded_string)
 		}
 		else
 		{
-			//printf("i=%d,c=%c\n", i, initial_string[i]);
 			expanded_string[q] = initial_string[i];
 			q++;
 		}
 	}
-	/*for(i=0;i<q;i++)
-	printf("%c", expanded_string[i]);*/
 	expanded_string[q] = '\0';
 	return expanded_string;
 }
