@@ -1,6 +1,7 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include<string.h>
+#define SIZE 35
 char * expand(char *initial_string, char *expanded_string)
 {
 	int initial_string_length = 0, i = 0, q = 0, diff = 0, y = 0;
@@ -32,81 +33,90 @@ char * expand(char *initial_string, char *expanded_string)
 void main()
 {
 	char *initial_string, expanded_string[25], *resultant_array;
-	int n, i, count = 0;
+	int n, i;
 	printf("Enter the size of the array that you are about to use\n");
 	scanf_s("%d", &n);
 	initial_string = (char *)malloc(sizeof(char)*(n + 1));
-	printf("Enter the array\n");
-	scanf_s("%s", initial_string, n + 1);
-	for (i = 0; i < n; i++)
+	if (initial_string == NULL)
 	{
-		if ((!isalpha(initial_string[i])) && (!isdigit(initial_string[i]) && (initial_string[i] != '-')))
+		printf("There is an error in allocating the memory\n");
+		return;
+	}
+	else {
+		printf("Enter the array\n");
+		scanf("%s", initial_string);
+		for (i = 0; i < n; i++)
 		{
-			printf("\nThe input array contains invalid symbols please check\n");
-			system("pause");
-			return 0;
-		}
-		else
-		{
-			if (initial_string[i] == '-')
+			if ((!isalpha(initial_string[i])) && (!isdigit(initial_string[i]) && (initial_string[i] != '-')))
 			{
-				if (!(isalpha(initial_string[i - 1]) && isalpha(initial_string[i + 1])) || !(isdigit(initial_string[i - 1]) && isdigit(initial_string[i + 1])))
+				printf("\nThe input array contains invalid symbols please check\n");
+				system("pause");
+				return 0;
+			}
+			else
+			{
+				if (initial_string[i] == '-')
 				{
-					printf("Somethings not right with input please check\n");
+					if (!((isalpha(initial_string[i - 1]) && isalpha(initial_string[i + 1])) || (isdigit(initial_string[i - 1]) && isdigit(initial_string[i + 1]))))
+					{
+						printf("Somethings not right with input please check\n");
 
-					system("pause");
-					return 0;
+						system("pause");
+						return 0;
+					}
 				}
 			}
 		}
-	}
-	for (i = 0; i < n; i++)
-	{
-		if (i == 0 && initial_string[i] == '-') {
-			printf("Wrong input\n");
-			return 0;
-			system("pause");
-		}
-		else if (i == n - 1 && initial_string[i] == '-')
+		for (i = 0; i < n; i++)
 		{
-			printf("Something wrong here\n");
-			return 0;
-			system("pause");
-		}
-		else if (initial_string[i] == '-' && ((!isalpha(initial_string[i + 1])) && !isdigit(initial_string[i + 1])))
-		{
-			printf("Something wrong\n");
-			return 0;
-			system("pause");
-		}
-		else if (initial_string[i] == '-')
-		{
-			if ((int)(initial_string[i - 1]) >= 65 && ((int)initial_string[i - 1]) <= 90)
-			{
-				initial_string[i - 1] = initial_string[i - 1] + 32;
-				printf("The string  here is %s--\n", initial_string);
-
-
+			if (i == 0 && initial_string[i] == '-') {
+				printf("Wrong input\n");
+				return 0;
+				system("pause");
 			}
-			if (initial_string[i + 1] >= 65 && initial_string[i + 1] <= 90)
+			else if (i == n - 1 && initial_string[i] == '-')
 			{
-				initial_string[i - 1] = initial_string[i - 1] + 32;
+				printf("Something wrong here\n");
+				return 0;
+				system("pause");
 			}
-		}
+			else if (initial_string[i] == '-' && ((!isalpha(initial_string[i + 1])) && !isdigit(initial_string[i + 1])))
+			{
+				printf("Something wrong\n");
+				return 0;
+				system("pause");
+			}
+			else if (initial_string[i] == '-')
+			{
+				if ((int)(initial_string[i - 1]) >= 65 && ((int)initial_string[i - 1]) <= 90)
+				{
+					initial_string[i - 1] = initial_string[i - 1] + 32;
+					printf("The string  here is %s--\n", initial_string);
 
-	}
-	for (i = 0; i < n; i++)
-	{
-		if (initial_string[i] == '-' && (initial_string[i + 1] < initial_string[i - 1]))
+
+				}
+				if (initial_string[i + 1] >= 65 && initial_string[i + 1] <= 90)
+				{
+					initial_string[i - 1] = initial_string[i - 1] + 32;
+				}
+			}
+
+		}
+		for (i = 0; i < n; i++)
 		{
-			printf("The alphabets or the numbers  are not in order\n");
+			if (initial_string[i] == '-' && (initial_string[i + 1] < initial_string[i - 1]))
+			{
+				printf("The alphabets or the numbers  are not in order\n");
 
-			system("pause");
-			return 0;
+				system("pause");
+				return 0;
+			}
+
 		}
-
+		resultant_array = expand(initial_string, expanded_string);
+		printf("\Finally the expanded string is %s\n", resultant_array);
 	}
-	resultant_array = expand(initial_string, expanded_string);
-	printf("\Finally the expanded string is %s\n", resultant_array);
+	free(initial_string);
+	initial_string = NULL;
 	system("pause");
 }

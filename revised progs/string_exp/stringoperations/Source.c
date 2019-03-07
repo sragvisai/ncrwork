@@ -1,4 +1,5 @@
 #include<stdio.h>
+#define size 30
 char* strcpy(char *p, char *s)
 {
 	int i = 0;
@@ -22,27 +23,28 @@ void strcat(char *t, char *s)
 	}
 	*t = '\0';
 }
-char * strrev(char *s)
+char * strrev(char *str)
 {
 	int i = 0, len = 0, j = 0;
-	char t, *e;
-	e = s;
-	while (s[i] != '\0')
+	char temp, *end,*start;
+	end = str;
+	start = str;
+	while (str[i] != '\0')
 	{
 		len++;
-		e++;
+		end++;
 		i++;
 	}
-	e--;
+	end--;
 	for (i = 0; i < len / 2; i++)
 	{
-		t = *s;
-		*s = *e;
-		*e = t;
-		e--;
-		s++;
+		temp = *start;
+		*start = *end;
+		*end = temp;
+		end--;
+		start++;
 	}
-	return s;
+	return str;
 }
 int strcmp(char *s, char *p)
 {
@@ -58,15 +60,15 @@ int strcmp(char *s, char *p)
 }
 void main()
 {
-	char *r, concat[25], comp[25];
+	char *r, concat[size], comp[size];
 	int i = 0, j = 0;
 	int first_length = 0, second_length = 0;
 	printf("Enter the first string length\n");
 	scanf("%d", &first_length);
 	printf("\n Enter the second string length\n");
 	scanf("%d", &second_length);
-	char *first = (char *)malloc(sizeof(char) *first_length);
-	char *second = (char *)malloc(sizeof(char) * second_length);
+	char *first = (char *)malloc(sizeof(char) *(first_length+1));
+	char *second = (char *)malloc(sizeof(char) * (second_length+1));
 	if (first == NULL || second == NULL)
 	{
 		printf("PROGRAM TERMINATED\n");
@@ -79,7 +81,7 @@ void main()
 		printf("Enter the second  string\n");
 		scanf("%s", second);
 		printf("Performing the string copy operation on %s onto %s\n\n", first, second);
-		printf("Taken strings are %s and %s \n", first, second);
+		printf("Source and destionation strings are %s and %s \n", first, second);
 		strcpy(first, second);//s is being copied into p
 		printf(" Copied as %s\n", first);
 		printf("Performing the concatenation operation\n\n");
@@ -92,13 +94,17 @@ void main()
 		strrev(first);
 		printf("\nReverse of the string %s\n", first);
 		printf("\n\n String comparision\n\n");
-		printf("\nEnter a string to be compared %s", first);
+		printf("\nEnter a string to be compared with %s----", first);
 		scanf("%s", comp);
 		i = strcmp(first, comp);
 		if (i == 0)
 			printf("The strings %s and %s are equal\n", first, comp);
 		else
 			printf("The strings %s and %s are not equal\n", first, comp);
+		free(second);
+		second = NULL;
+		free(first);
+		first = NULL;
 	}
 	getch();
 

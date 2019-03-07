@@ -6,8 +6,8 @@ int prec(char c)
 		return 10;
 	else if (c == '+' || c == '-')
 		return 9;
-	else if (c == '{' || c == '(' || c == '[')
-		return 15;
+	/*else if (c == '{' || c == '(' || c == '[')
+		return 15;*/
 	else
 		return 0;
 }
@@ -79,9 +79,9 @@ void main()
 	stack2 st;
 	int j= 0,size,c=0;
 	char str[20],ch,strop[20];
-	cout << "Enter the string";
+	cout << "Enter the string to be converted";
 	cin >> str;
-	cout << "Enter the size";
+	cout << "Enter the stack  size";
 	cin >> size;
 	st.getsize(size);
 	for (int i = 0; i < strlen(str); i++)
@@ -100,16 +100,16 @@ void main()
 				//cout << "hello";
 				st.push(ch);
 			}
-			else if (ch == ')')
-			{
-				while (st.peek() != '(' && !st.Isempty())
-				{
-					strop[j] = st.pop();
-					//cout << strop[j] << endl;
-					j++;
-				}
-				st.pop();
-			}
+			//else if (ch == ')')
+			//{
+			//	while (st.peek() != '(' && !st.Isempty())
+			//	{
+			//		strop[j] = st.pop();
+			//		//cout << strop[j] << endl;
+			//		j++;
+			//	}
+			//	st.pop();
+			//}
 			else if ((prec(st.peek()) >= prec(ch)))
 			{
 				while ((prec(st.peek()) >= prec(ch))) {
@@ -122,8 +122,6 @@ void main()
 			else
 			{
 				st.push(ch);
-				cout << "pushed-----" << ch << endl;
-				st.display();
 
 			}
 		}
