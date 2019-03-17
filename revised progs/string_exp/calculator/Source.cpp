@@ -3,6 +3,7 @@
 #include "addition.h"
 #include "division.h"
 #include "subtraction.h"
+#define str_size 20
 using namespace std;
 int prec(char c)
 {
@@ -18,11 +19,11 @@ struct stack1 {
 	char *s;
 	int top;
 };
-class stack2
+class stack_class
 {
 	stack1 stk;
 public:
-	stack2()
+	stack_class()
 	{
 		stk.size = 0;
 		stk.s = NULL;
@@ -49,7 +50,7 @@ public:
 		if (!Isempty())
 			return(stk.s[stk.top--]);
 		else
-			cout << "UnderflowA";
+			cout << "Underflow";
 	}
 	bool Isempty()
 	{
@@ -76,9 +77,10 @@ public:
 };
 char *infix_postfix(char * str)
 {
-	stack2 st;
+	stack_class st;
 	st.getsize(10);
-	char strop[20],ch;
+	char ch;
+	char *strop = (char *)malloc(sizeof(char)*(str_size));
 	int j = 0,c=0;
 	for (int i = 0; i < strlen(str); i++)
 	{
@@ -116,24 +118,20 @@ char *infix_postfix(char * str)
 		strop[j] = st.pop();
 		j++;
 	}
-	c = j;
-	for (j = 0; j < c; j++)
-		cout << strop[j];
+	strop[j] = '\0';
 	return strop;
 }
 int postfix_evalu(char *tobe_str)
 {
-stack2 st;
-st.getsize(10);
-char str[25], ch;
+	stack_class st;
+	st.getsize(10);
+	char ch;
 int n, i, j, res, temp;
-cout << "Enter the postfix string" << endl;
-cin >> str;
-for (i = 0; i < strlen(str); i++)
+for (i = 0; i < strlen(tobe_str); i++)
 {
-	if (isdigit(str[i]))
+	if (isdigit(tobe_str[i]))
 	{
-		j = str[i] - '0';
+		j = tobe_str[i] - '0';
 		st.push(j);
 	}
 	else
@@ -143,32 +141,32 @@ for (i = 0; i < strlen(str); i++)
 			temp = 0;
 			cout << endl;
 			temp = st.pop();
-			switch (str[i])
+			switch (tobe_str[i])
 			{
 			case'*':
-				cout << "in multi" << endl;
-				cout << "temp=" << temp << endl;
-				cout << "top=" << st.givetop() << endl;
+				/*cout << "in multi" << endl;*/
+		/*		cout << "temp=" << temp << endl;
+				cout << "top=" << st.givetop() << endl;*/
 				temp = multi(temp, st.peek());
-				cout << "temp=" << temp <<endl;
+				/*cout << "temp=" << temp <<endl;*/
 				st.pop();
 				st.push(temp);
 				break;
 			case'+':
-				cout << "in add" << endl;
+			/*	cout << "in add" << endl;*/
 				temp = add(temp , st.peek());
 				st.pop();
 				st.push(temp);
 				break;
 
 			case'-':
-				cout << "in sub" << endl;
+				/*cout << "in sub" << endl;*/
 				temp = sub(temp , st.peek());
 				st.pop();
 				st.push(temp);
 				break;
 			case'/':
-				cout << "in div" << endl;
+				/*cout << "in div" << endl;*/
 				temp = divi(temp , st.peek());
 				st.pop();
 				st.push(temp);
@@ -180,13 +178,12 @@ for (i = 0; i < strlen(str); i++)
 		}
 	}
 }
-cout << temp << endl;
 return temp;
 }
 void main()
 {
 	char str_in[25];
-	char *op_str;
+	char *op_str=NULL;
 	int result;
 	cout << "Enter the string to be calcuated without the braces\n";
 	cin >> str_in;
@@ -199,9 +196,16 @@ void main()
 
 			return;
 		}
+		else if ((str_in[i] == '+' || str_in[i] == '-' || str_in[i] == '*' || str_in[i] == '/') && (str_in[i + 1] == '+' || str_in[i + 1] == '-' || str_in[i + 1] == '*' || str_in[i + 1] == '/'))
+		{
+			cout << "Nope seomething is wrong with your input" << endl;
+			system("pause");
+
+			return;
+		}
 	}
 	op_str = infix_postfix(str_in);
 	result=postfix_evalu(op_str);
-	cout << "The required result \n" << result;
+	cout << "The required result---" << result<<endl;
 	system("pause");
 }

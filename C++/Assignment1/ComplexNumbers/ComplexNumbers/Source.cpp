@@ -20,28 +20,37 @@ public:
 		real = i;
 		img = j;
 	}
-	friend void add_complex(Complex c1, Complex c2);
-	friend void mul_complex(Complex c1, Complex c2);
+	friend Complex add_complex(Complex c1, Complex c2);
+	friend Complex mul_complex(Complex c1, Complex c2);
 };
-	 void add_complex(Complex c1, Complex c2)
-	{
-		c1.real = c1.real + c2.real;
-		c1.img = c1.img + c2.img;
-		cout << "Addition:" << c1.real << "-" << c1.img << endl;;
+	 Complex add_complex(Complex c1, Complex c2)
+	{	
+		 Complex temp;
+		temp.real = c1.real + c2.real;
+		temp.img = c1.img + c2.img;
+		return temp;
+		
 	}
-	 void  mul_complex(Complex c1, Complex c2)
-	{
-		c1.real = c1.real*c2.real;
-		c1.img= c1.img*c2.img;
-		cout << "Multiplication:" << c1.real <<"-"<< c1.img;
+	 Complex  mul_complex(Complex c1, Complex c2)
+	{	
+		 Complex temp;
+		temp.real = c1.real*c2.real;
+		temp.img= c1.img*c2.img;
+		return temp;
 	}
 int main()
 {
-	Complex c1(23);
-	Complex c2(21, 23);
-	Complex c3;
-	add_complex(c1, c2);
-	mul_complex(c1, c2);
-	getchar();
+	float c2_rel, c2_img,c1_both;
+	cout << "Enter the value for c1 for a single parameter" << endl;
+	cin >> c1_both;
+	cout << "Enter the values for real part and imaginary part of c2" << endl;
+	cin >> c2_rel >> c2_img;
+	Complex c1(c1_both);
+	Complex c2(c2_rel,c2_img);
+	Complex c3=add_complex(c1, c2);;
+	cout << "ADDITION---Real part--" << c3.real << "Imaginary part--" << c3.img << endl;
+	Complex c4=mul_complex(c1, c2);
+	cout << "Multiplication---Real part--" << c4.real << "Imaginary part--" << c4.img << endl;
+	system("pause");
 	return 0;
 }

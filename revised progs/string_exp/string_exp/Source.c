@@ -30,12 +30,18 @@ char * expand(char *initial_string, char *expanded_string)
 	expanded_string[q] = '\0';
 	return expanded_string;
 }
-void main()
+int main()
 {
 	char *initial_string, expanded_string[25], *resultant_array;
 	int n, i;
 	printf("Enter the size of the array that you are about to use\n");
 	scanf_s("%d", &n);
+	if (n == 0)
+	{
+		printf("Not a valid size try again\n");
+		system("pause");
+		return 0;
+	}
 	initial_string = (char *)malloc(sizeof(char)*(n + 1));
 	if (initial_string == NULL)
 	{
@@ -91,7 +97,7 @@ void main()
 				if ((int)(initial_string[i - 1]) >= 65 && ((int)initial_string[i - 1]) <= 90)
 				{
 					initial_string[i - 1] = initial_string[i - 1] + 32;
-					printf("The string  here is %s--\n", initial_string);
+					//printf("The string  here is %s--\n", initial_string);
 
 
 				}
